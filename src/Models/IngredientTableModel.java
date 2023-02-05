@@ -20,9 +20,13 @@ public class IngredientTableModel implements TableModel {
         ingredients.add(mozzarella);
         ingredients.add(feta);
     }*/
+    public void addIngredientLine() {
+        ingredients.add(new Ingredient("", "", 0.0, 0.0));
+    }
     @Override
     public int getRowCount() {
-        return 4; // utiliser les attributs et fonctions des listes (length)
+        // return 4; // utiliser les attributs et fonctions des listes (length)
+        return ingredients.size();
     }
 
     @Override
@@ -73,7 +77,16 @@ public class IngredientTableModel implements TableModel {
 
     @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-
+        switch (columnIndex) {
+            case 0:
+                ingredients.get(rowIndex).name = (String) aValue;
+            case 1:
+                ingredients.get(rowIndex).unit = (String) aValue;
+            case 2:
+                ingredients.get(rowIndex).quantity = (Double) aValue;
+            default:
+                ingredients.get(rowIndex).cost = (Double) aValue;
+        }
     }
 
     @Override // ignorer

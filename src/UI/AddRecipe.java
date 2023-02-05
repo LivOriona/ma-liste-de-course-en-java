@@ -32,7 +32,9 @@ public class AddRecipe {
     }
 
     public void addIngredient() {
-
+        IngredientTableModel tableModel = (IngredientTableModel) newRecipeIngredientsList.getModel();
+        tableModel.addIngredientLine();
+        newRecipeIngredientsList.updateUI();
     }
 
     public static void main() {
@@ -45,7 +47,7 @@ public class AddRecipe {
 
     private void createUIComponents() {
         newRecipeIngredientsList = new JTable(new Models.IngredientTableModel());
-        //((IngredientTableModel) newRecipeIngredientsList.getModel()).test();
+       //  ((IngredientTableModel) newRecipeIngredientsList.getModel()).test();
         // Integer 1 = Integer(1)
     }
 }
